@@ -2,12 +2,7 @@ package ru.otus.vvpetrov.service;
 
 import org.springframework.stereotype.Service;
 import ru.otus.vvpetrov.domain.Student;
-import ru.otus.vvpetrov.exception.ExceptionQuestionService;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import ru.otus.vvpetrov.exception.ExceptionStudentService;
 
 @Service
 public class StudentServiceConsole implements StudentService {
@@ -15,16 +10,14 @@ public class StudentServiceConsole implements StudentService {
     @Override
     public Student getStudent() {
         Student student = new Student();
-        InputStream inputStream = System.in;
-        Reader inputStreamReader = new InputStreamReader(inputStream);
+        IOService ioService = new IOServiceConsole();
         try {
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            System.out.println("enter name");
-            student.setName(bufferedReader.readLine());
-            System.out.println("enter surname");
-            student.setSurName(bufferedReader.readLine());
+            ioService.outputString("enter name");
+            student.setName(ioService.inputString());
+            ioService.outputString("enter surname");
+            student.setSurName(ioService.inputString());
         } catch (Exception e) {
-            throw new ExceptionQuestionService(" Error: " + e.getMessage());
+            throw new ExceptionStudentService(" Error: " + e.getMessage());
         }
         return student;
     }

@@ -28,11 +28,8 @@ public class QuestionsDaoCsv implements QuestionsDao {
                 .withSeparator(';')
                 .withIgnoreQuotations(true)
                 .build();
-
         try (InputStream questionInputStream = this.getClass().getClassLoader().getResourceAsStream(fileQuestions);
-
              Reader reader = new InputStreamReader(questionInputStream);
-
              CSVReader csvReader = new CSVReaderBuilder(reader)
                      .withSkipLines(1)
                      .withCSVParser(parser)

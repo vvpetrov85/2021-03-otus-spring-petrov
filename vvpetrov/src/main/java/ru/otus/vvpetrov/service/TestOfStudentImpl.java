@@ -4,6 +4,7 @@ import ru.otus.vvpetrov.dao.QuestionsDao;
 import ru.otus.vvpetrov.domain.Question;
 import ru.otus.vvpetrov.domain.Student;
 import ru.otus.vvpetrov.domain.Answer;
+import ru.otus.vvpetrov.exception.ExceptionQuestionService;
 
 public class TestOfStudentImpl implements TestOfStudent {
 
@@ -21,6 +22,9 @@ public class TestOfStudentImpl implements TestOfStudent {
         try {
             //создадим студента
             Student student = studentService.getStudent();
+            //Поприветствуем студента и объясним правила ввода ответа
+            System.out.println(student.toString() + "! Welcome to the student testing!");
+            System.out.println("You must enter the correct answers as numeric values(for example 1,3)");
             // получим на все вопросы ответы
             questionsDao.getQuestions().forEach(this::resultOfQuestion);
             // выведем количество правильных ответов
@@ -36,15 +40,18 @@ public class TestOfStudentImpl implements TestOfStudent {
         questionService.printQuestion(question.getQuestion());
         questionService.printQuestion(question.getChoiceQuestion());
         //получим ответ
-        Answer arrayIntStudentAnswer = questionService.getStudentAnswer();
-        //если правильный ответ увеличим показатель на один
-        if (arrayIntStudentAnswer.getAnswer().equals(question.getAnswersList().getAnswer())) {
-            countCorrectAnswer++;
+        try {
+            Answer arrayIntStudentAnswer = questionService.getStudentAnswer();
+            //если правильный ответ увеличим показатель на один
+            if (arrayIntStudentAnswer.getAnswer().equals(question.getAnswersList().getAnswer())) {
+                countCorrectAnswer++;
+            }
+            // выведем ответ студента и правильный результат
+            System.out.println("Your answer - " + arrayIntStudentAnswer.getAnswer().toString() +
+                    ", correct answer - " + question.getAnswersList().getAnswer().toString());
+        } catch (ExceptionQuestionService e) {
+            System.out.println("Your answer is wrong format. Error :" + e.getMessage());
         }
-        // выведем ответ студента и правильный результат
-        System.out.println("Your answer - " + arrayIntStudentAnswer.getAnswer().toString() +
-                ", correct answer - " + question.getAnswersList().getAnswer().toString());
-
     }
 }
 
