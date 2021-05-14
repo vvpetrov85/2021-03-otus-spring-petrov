@@ -1,5 +1,7 @@
 package ru.otus.vvpetrov.dao;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import ru.otus.vvpetrov.domain.Answer;
 import ru.otus.vvpetrov.exception.ExceptionDao;
 import ru.otus.vvpetrov.domain.Question;
@@ -11,11 +13,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+@Service
 public class QuestionsDaoCsv implements QuestionsDao {
     private final String fileQuestions;
 
-    public QuestionsDaoCsv(String fileQuestions) {
+    public QuestionsDaoCsv(@Value("${file_name}") String fileQuestions) {
         this.fileQuestions = fileQuestions;
     }
 

@@ -26,7 +26,7 @@ class QuestionsDaoCsvTest {
 
     @Test
     @DisplayName("Тестирование Dao. Получаем исключение.")
-    void getQuestionsError(){
+    void getQuestionsError() {
 
         questionsDaoCsv = new QuestionsDaoCsv("QuestionsTest1.csv");
 

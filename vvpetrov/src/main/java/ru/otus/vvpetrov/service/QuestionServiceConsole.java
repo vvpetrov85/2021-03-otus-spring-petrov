@@ -6,11 +6,14 @@ import ru.otus.vvpetrov.exception.ExceptionQuestionService;
 
 import java.util.List;
 
-
 //Annotation-based конфигурацию контекста
 @Service
 public class QuestionServiceConsole implements QuestionService {
-    IOService ioService = new IOServiceConsole();
+    private final IOService ioService;
+
+    public QuestionServiceConsole(IOService ioService) {
+        this.ioService = ioService;
+    }
 
     @Override
     public Answer getStudentAnswer() {

@@ -7,10 +7,15 @@ import ru.otus.vvpetrov.exception.ExceptionStudentService;
 @Service
 public class StudentServiceConsole implements StudentService {
 
+    private final IOService ioService;
+
+    public StudentServiceConsole(IOService ioService) {
+        this.ioService = ioService;
+    }
+
     @Override
     public Student getStudent() {
         Student student = new Student();
-        IOService ioService = new IOServiceConsole();
         try {
             ioService.outputString("enter name");
             student.setName(ioService.inputString());
