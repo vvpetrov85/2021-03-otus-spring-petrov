@@ -1,72 +1,61 @@
 package ru.otus.vvpetrov.service;
 
+import org.springframework.stereotype.Service;
 import ru.otus.vvpetrov.dao.QuestionsDao;
 import ru.otus.vvpetrov.domain.Question;
 import ru.otus.vvpetrov.domain.Student;
+import ru.otus.vvpetrov.domain.Answer;
+import ru.otus.vvpetrov.exception.ExceptionQuestionService;
 
-import java.util.Arrays;
-
+@Service
 public class TestOfStudentImpl implements TestOfStudent {
 
     private final QuestionsDao questionsDao;
-    private int i;
-    private Student student = new Student();
+    private final StudentService studentService;
+    private static int countCorrectAnswer;
+    private final IOService ioService;
+    private final QuestionService questionService;
 
-    public TestOfStudentImpl(QuestionsDao questionsDao) {
+    public TestOfStudentImpl(QuestionsDao questionsDao, StudentService studentService, IOService ioService, QuestionService questionService) {
         this.questionsDao = questionsDao;
+        this.studentService = studentService;
+        this.ioService = ioService;
+        this.questionService = questionService;
     }
 
     @Override
     public void testOfStudent() {
         try {
-            //создаим студента
-            student = getStudentFIO();
+            //создадим студента
+            Student student = studentService.getStudent();
+            //Поприветствуем студента и объясним правила ввода ответа
+            ioService.outputString(student.toString() + "! Welcome to the student testing!");
+            ioService.outputString("You must enter the correct answers as numeric values(for example 1,3)");
             // получим на все вопросы ответы
-            questionsDao.getQuestions()
-                    .stream()
-                    .forEach(question -> resultOfQuestion(question)
-                    );
+            questionsDao.getQuestions().forEach(this::resultOfQuestion);
             // выведем количество правильных ответов
-            System.out.println("Dear, " + student.toString() + "! Count correct answer = " + i);
-
+            ioService.outputString("Dear, " + student.toString() + "! Count correct answer = " + countCorrectAnswer);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            ioService.outputString(e.getMessage());
         }
     }
 
-    private Student getStudentFIO() {
-        QuestionService questionService = new QuestionServiceConsole();
-        questionService.printQuestion("enter surname");
-        student.setSurName(questionService.getStudentAnswer().getAnswers());
-        questionService.printQuestion("enter name");
-        student.setName(questionService.getStudentAnswer().getAnswers());
-        return student;
-    }
-
     private void resultOfQuestion(Question question) {
-        QuestionService questionService = new QuestionServiceConsole();
         //прогоним его по вопросам
         questionService.printQuestion(question.getQuestion());
         questionService.printQuestion(question.getChoiceQuestion());
         //получим ответ
-        int[] arrayIntStudentAnswer = new int[10];
         try {
-            arrayIntStudentAnswer = Arrays.stream(questionService
-                    .getStudentAnswer().getAnswers().trim().split(",")).mapToInt(Integer::parseInt).toArray();
-        } catch (Exception e) {
-            System.out.println("you must enter the correct answers as numeric values(for example 1,3)");
-            try {
-                arrayIntStudentAnswer = Arrays.stream(questionService
-                        .getStudentAnswer().getAnswers().trim().split(",")).mapToInt(Integer::parseInt).toArray();
-            } catch (Exception e1) {
-                System.out.println(" Error: " + e1.getMessage());
+            Answer arrayIntStudentAnswer = questionService.getStudentAnswer();
+            //если правильный ответ увеличим показатель на один
+            if (arrayIntStudentAnswer.getAnswer().equals(question.getAnswersList().getAnswer())) {
+                countCorrectAnswer++;
             }
-        } finally {
-            if (Arrays.equals(arrayIntStudentAnswer, question.getAnswers())) {
-                i++;
-            }
-            System.out.println("Your answer - " + Arrays.toString(arrayIntStudentAnswer) +
-                    ", correct answer - " + Arrays.toString(question.getAnswers()));
+            // выведем ответ студента и правильный результат
+            ioService.outputString("Your answer - " + arrayIntStudentAnswer.getAnswer().toString() +
+                    ", correct answer - " + question.getAnswersList().getAnswer().toString());
+        } catch (ExceptionQuestionService e) {
+            ioService.outputString("Your answer is wrong format. Error :" + e.getMessage());
         }
     }
 }

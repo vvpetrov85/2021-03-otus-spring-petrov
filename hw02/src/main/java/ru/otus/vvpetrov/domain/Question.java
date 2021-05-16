@@ -4,13 +4,13 @@ public class Question {
     private final Integer numberQuestion;
     private final String question;
     private final String choiceQuestion;
-    private final int[] answers;
+    private final Answer answersList;
 
-    public Question(Integer numberQuestion, String question, String choiceQuestion, int[] answers) {
+    public Question(Integer numberQuestion, String question, String choiceQuestion, Answer answerList) {
         this.numberQuestion = numberQuestion;
         this.question = question;
         this.choiceQuestion = choiceQuestion;
-        this.answers = answers;
+        this.answersList = answerList;
     }
 
     public String getQuestion() {
@@ -21,11 +21,7 @@ public class Question {
         return choiceQuestion;
     }
 
-    public Integer getNumberQuestion() {
-        return numberQuestion;
-    }
-
-    public int[] getAnswers() {
-        return answers;
+    public Answer getAnswersList() {
+        return answersList;
     }
 }

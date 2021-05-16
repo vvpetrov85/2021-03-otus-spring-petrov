@@ -1,27 +1,28 @@
 package ru.otus.vvpetrov.service;
 
 import org.springframework.stereotype.Service;
-import ru.otus.vvpetrov.domain.StudentAnswer;
+import ru.otus.vvpetrov.domain.Answer;
 import ru.otus.vvpetrov.exception.ExceptionQuestionService;
 
-import java.io.*;
+import java.util.List;
 
 //Annotation-based конфигурацию контекста
 @Service
 public class QuestionServiceConsole implements QuestionService {
+    private final IOService ioService;
+
+    public QuestionServiceConsole(IOService ioService) {
+        this.ioService = ioService;
+    }
 
     @Override
-    public StudentAnswer getStudentAnswer() {
-
-        StudentAnswer studentAnswer = new StudentAnswer();
-        InputStream inputStream = System.in;
-        Reader inputStreamReader = new InputStreamReader(inputStream);
-        //TODO не могу тут вызвать метод close так как падаест с ошибкой на втором вопросе Stream Closed
-        // ну и аналогично try-with-resource
+    public Answer getStudentAnswer() {
+        Answer studentAnswer = new Answer();
+        String answerString = "";
         try {
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            studentAnswer.setAnswers(bufferedReader.readLine());
-
+            answerString = ioService.inputString();
+            List<Integer> answerListInt = ioService.readIntList(answerString);
+            studentAnswer.setAnswer(answerListInt);
         } catch (Exception e) {
             throw new ExceptionQuestionService(" Error: " + e.getMessage());
         }
@@ -30,8 +31,7 @@ public class QuestionServiceConsole implements QuestionService {
 
     @Override
     public void printQuestion(String str) {
-        System.out.println(str);
-
+        ioService.outputString(str);
     }
 }
 

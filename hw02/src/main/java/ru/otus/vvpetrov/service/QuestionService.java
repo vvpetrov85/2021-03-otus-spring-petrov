@@ -1,8 +1,9 @@
 package ru.otus.vvpetrov.service;
 
-import ru.otus.vvpetrov.domain.StudentAnswer;
+import ru.otus.vvpetrov.domain.Answer;
 
 public interface QuestionService {
-    StudentAnswer getStudentAnswer();
     void printQuestion(String str);
+
+    Answer getStudentAnswer();
 }
