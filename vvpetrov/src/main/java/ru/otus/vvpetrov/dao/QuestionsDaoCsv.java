@@ -1,9 +1,6 @@
 package ru.otus.vvpetrov.dao;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-import ru.otus.vvpetrov.domain.Answer;
-import ru.otus.vvpetrov.exception.ExceptionDao;
+import ru.otus.vvpetrov.Exception.ExceptionDao;
 import ru.otus.vvpetrov.domain.Question;
 import com.opencsv.*;
 
@@ -13,45 +10,48 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
 public class QuestionsDaoCsv implements QuestionsDao {
     private final String fileQuestions;
 
-    public QuestionsDaoCsv(@Value("${file_name}") String fileQuestions) {
+    public QuestionsDaoCsv(String fileQuestions) {
         this.fileQuestions = fileQuestions;
     }
 
     @Override
     public List<Question> getQuestions() {
-        final CSVParser parser;
+
         List<Question> listQuestion = new LinkedList<>();
 
-        parser = new CSVParserBuilder()
-                .withSeparator(';')
-                .withIgnoreQuotations(true)
-                .build();
-        try (InputStream questionInputStream = this.getClass().getClassLoader().getResourceAsStream(fileQuestions);
-             Reader reader = new InputStreamReader(questionInputStream);
-             CSVReader csvReader = new CSVReaderBuilder(reader)
-                     .withSkipLines(1)
-                     .withCSVParser(parser)
-                     .build();
-        ) {
-            new LinkedList<>(csvReader.readAll()).forEach(
+        try {
+            InputStream questionInputStream = this.getClass().getClassLoader().getResourceAsStream(fileQuestions);
+
+            Reader reader = new InputStreamReader(questionInputStream);
+
+            CSVParser parser = new CSVParserBuilder()
+                    .withSeparator(';')
+                    .withIgnoreQuotations(true)
+                    .build();
+
+            CSVReader csvReader = new CSVReaderBuilder(reader)
+                    .withSkipLines(1)
+                    .withCSVParser(parser)
+                    .build();
+
+            csvReader.readAll().stream().collect(Collectors.toList()).stream().forEach(
                     (q) -> {
-                        Answer answerForQuestion = new Answer();
-                        answerForQuestion.setStudentAnswer(
-                                Arrays.stream(q[3].trim().split(",")).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList()));
                         listQuestion.add(new Question(
                                 Integer.valueOf(q[0]),
                                 q[1].trim(),
                                 q[2].trim(),
-                                answerForQuestion));
+                                Arrays.stream(q[3].trim().split(",")).mapToInt(Integer::parseInt).toArray()));
                     }
             );
+            reader.close();
+            csvReader.close();
         } catch (Exception e) {
-            throw new ExceptionDao(fileQuestions + " Error: " + e.getMessage());
+            throw new ExceptionDao("Ошибка работы с файлом " + fileQuestions + ". Просьба обратиться к экзаменатору");
         }
+
         return listQuestion;
     }
 }

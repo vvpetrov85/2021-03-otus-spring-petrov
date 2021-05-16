@@ -1,4 +1,4 @@
-package ru.otus.vvpetrov.exception;
+package ru.otus.vvpetrov.Exception;
 
 public class ExceptionDao extends RuntimeException {
     public ExceptionDao(String message) {
