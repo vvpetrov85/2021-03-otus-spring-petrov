@@ -5,11 +5,11 @@ import ru.otus.vvpetrov.domain.Student;
 import ru.otus.vvpetrov.exception.ExceptionStudentService;
 
 @Service
-public class StudentServiceConsole implements StudentService {
+public class StudentServiceImpl implements StudentService {
 
     private final IOService ioService;
 
-    public StudentServiceConsole(IOService ioService) {
+    public StudentServiceImpl(IOService ioService) {
         this.ioService = ioService;
     }
 
@@ -22,7 +22,7 @@ public class StudentServiceConsole implements StudentService {
             ioService.outputString("enter surname");
             student.setSurName(ioService.inputString());
         } catch (Exception e) {
-            throw new ExceptionStudentService(" Error: " + e.getMessage());
+            throw new ExceptionStudentService(" Error during get information of student: ", e);
         }
         return student;
     }

@@ -1,6 +1,7 @@
 package ru.otus.vvpetrov.dao;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import ru.otus.vvpetrov.domain.Answer;
 import ru.otus.vvpetrov.exception.ExceptionDao;
@@ -13,7 +14,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
+//Репозиторий - это место, где хранятся данные. Сервис - это то, что манипулирует данными.
+@Repository
 public class QuestionsDaoCsv implements QuestionsDao {
     private final String fileQuestions;
 
@@ -50,7 +52,7 @@ public class QuestionsDaoCsv implements QuestionsDao {
                     }
             );
         } catch (Exception e) {
-            throw new ExceptionDao(fileQuestions + " Error: " + e.getMessage());
+            throw new ExceptionDao("Error during read file " + fileQuestions, e);
         }
         return listQuestion;
     }

@@ -7,5 +7,5 @@ public interface IOService {
 
     String inputString();
 
-    List<Integer> readIntList(String str);
+    List<Integer> readIntList();
 }

@@ -2,29 +2,27 @@ package ru.otus.vvpetrov.service;
 
 import org.springframework.stereotype.Service;
 import ru.otus.vvpetrov.dao.QuestionsDao;
+import ru.otus.vvpetrov.domain.Answer;
 import ru.otus.vvpetrov.domain.Question;
 import ru.otus.vvpetrov.domain.Student;
-import ru.otus.vvpetrov.domain.Answer;
 import ru.otus.vvpetrov.exception.ExceptionQuestionService;
 
 @Service
-public class TestOfStudentImpl implements TestOfStudent {
+public class StudentTestingServiceImpl implements StudentTestingService {
 
     private final QuestionsDao questionsDao;
     private final StudentService studentService;
-    private static int countCorrectAnswer;
+    private int countCorrectAnswer;
     private final IOService ioService;
-    private final QuestionService questionService;
 
-    public TestOfStudentImpl(QuestionsDao questionsDao, StudentService studentService, IOService ioService, QuestionService questionService) {
+    public StudentTestingServiceImpl(QuestionsDao questionsDao, StudentService studentService, IOService ioService) {
         this.questionsDao = questionsDao;
         this.studentService = studentService;
         this.ioService = ioService;
-        this.questionService = questionService;
     }
 
     @Override
-    public void testOfStudent() {
+    public void runStudentTest() {
         try {
             //создадим студента
             Student student = studentService.getStudent();
@@ -32,7 +30,7 @@ public class TestOfStudentImpl implements TestOfStudent {
             ioService.outputString(student.toString() + "! Welcome to the student testing!");
             ioService.outputString("You must enter the correct answers as numeric values(for example 1,3)");
             // получим на все вопросы ответы
-            questionsDao.getQuestions().forEach(this::resultOfQuestion);
+            questionsDao.getQuestions().forEach(this::testingOfStudent);
             // выведем количество правильных ответов
             ioService.outputString("Dear, " + student.toString() + "! Count correct answer = " + countCorrectAnswer);
         } catch (Exception e) {
@@ -40,13 +38,23 @@ public class TestOfStudentImpl implements TestOfStudent {
         }
     }
 
-    private void resultOfQuestion(Question question) {
+    private Answer getStudentAnswer() {
+        Answer studentAnswer = new Answer();
+        try {
+            studentAnswer.setAnswer(ioService.readIntList());
+        } catch (Exception e) {
+            ioService.outputString(" Error: " + e.getMessage());
+        }
+        return studentAnswer;
+    }
+
+    private void testingOfStudent(Question question) {
         //прогоним его по вопросам
-        questionService.printQuestion(question.getQuestion());
-        questionService.printQuestion(question.getChoiceQuestion());
+        ioService.outputString(question.getQuestion());
+        ioService.outputString(question.getChoiceQuestion());
         //получим ответ
         try {
-            Answer arrayIntStudentAnswer = questionService.getStudentAnswer();
+            Answer arrayIntStudentAnswer = getStudentAnswer();
             //если правильный ответ увеличим показатель на один
             if (arrayIntStudentAnswer.getAnswer().equals(question.getAnswersList().getAnswer())) {
                 countCorrectAnswer++;
@@ -58,6 +66,7 @@ public class TestOfStudentImpl implements TestOfStudent {
             ioService.outputString("Your answer is wrong format. Error :" + e.getMessage());
         }
     }
+
 }
 
 
