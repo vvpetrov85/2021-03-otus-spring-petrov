@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="33e834b8-d4ab-4578-9774-85a8f6834c06" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="140" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$PROJECT_DIR$/../../apache-maven-3.8.1" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="jdkForImporter" value="#JAVA_HOME" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1rL8sGuFbo5YX4AKyl2fpm5BGIA" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="spring.boot" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="ru.otus.vvpetrov.service" />
+      <recent name="ru.otus.vvpetrov" />
+      <recent name="ru.otus.vvpetrov.dao" />
+      <recent name="ru.otus.vvpetrov.SpringIoCApplication" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Java\otus-vvpetrov\vvpetrov\src\test" />
+      <recent name="C:\Java\otus-vvpetrov\vvpetrov\src\test\java" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="ru.otus.vvpetrov" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ru.otus.vvpetrov.service" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.SprigIoCApplication">
+    <configuration name="SprigIoCApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.otus.vvpetrov.SprigIoCApplication" />
+      <module name="spring-otus" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.otus.vvpetrov.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in spring-otus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring-otus" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IOServiceConsoleTest.outputString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring-otus" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.otus.vvpetrov.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.otus.vvpetrov.service" />
+      <option name="MAIN_CLASS_NAME" value="ru.otus.vvpetrov.service.IOServiceConsoleTest" />
+      <option name="METHOD_NAME" value="outputString" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IOServiceConsoleTest.readIntListException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring-otus" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.otus.vvpetrov.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.otus.vvpetrov.service" />
+      <option name="MAIN_CLASS_NAME" value="ru.otus.vvpetrov.service.IOServiceConsoleTest" />
+      <option name="METHOD_NAME" value="readIntListException" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ru.otus.vvpetrov in spring-otus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring-otus" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.otus.vvpetrov.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.otus.vvpetrov" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test in vvpetrov" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="vvpetrov" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.SprigIoCApplication" />
+        <item itemvalue="JUnit.IOServiceConsoleTest.readIntListException" />
+        <item itemvalue="JUnit.ru.otus.vvpetrov in spring-otus" />
+        <item itemvalue="JUnit.All in spring-otus" />
+        <item itemvalue="JUnit.IOServiceConsoleTest.outputString" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="33e834b8-d4ab-4578-9774-85a8f6834c06" name="Default Changelist" comment="" />
+      <created>1618744215100</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1618744215100</updated>
+      <workItem from="1618744218359" duration="16863000" />
+      <workItem from="1618812812640" duration="3359000" />
+      <workItem from="1618820985182" duration="7370000" />
+      <workItem from="1618837192231" duration="22208000" />
+      <workItem from="1619014002836" duration="3842000" />
+      <workItem from="1619593389560" duration="38577000" />
+      <workItem from="1619654644134" duration="2668000" />
+      <workItem from="1620068763755" duration="64854000" />
+      <workItem from="1620392262366" duration="6519000" />
+      <workItem from="1620712410014" duration="49712000" />
+      <workItem from="1620972657046" duration="2816000" />
+      <workItem from="1620975951361" duration="336000" />
+      <workItem from="1620976396207" duration="1891000" />
+      <workItem from="1621067899749" duration="22342000" />
+      <workItem from="1621532165414" duration="31359000" />
+      <workItem from="1621924495489" duration="29971000" />
+      <workItem from="1622370953303" duration="2495000" />
+      <workItem from="1622395009991" duration="1349000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="((StudentServiceImpl)studentService).ioService" custom="ru.otus.vvpetrov.service.StudentServiceImpl" />
+        <watch expression="((StudentTestingServiceImpl)testingService).studentService" custom="ru.otus.vvpetrov.service.StudentTestingServiceImpl" />
+        <watch expression="baiStream.buf[2]" />
+        <watch expression="((IOServiceConsole)ioService).systemOut" custom="ru.otus.vvpetrov.service.IOServiceConsole" />
+      </configuration>
+      <configuration name="Application">
+        <watch expression="csvReader.lineReader.reader" />
+        <watch expression="question.value[2]" />
+        <watch expression="numberQuestion" />
+        <watch expression="listQuestion.get(1)" />
+        <watch expression="student.surName" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/vvpetrov$SprigIoCApplication.ic" NAME="SprigIoCApplication Coverage Results" MODIFIED="1620125366845" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ru.otus.vvpetrov.SpringIoCApplication.SprigIoCApplication</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/vvpetrov$All_in_spring_otus.ic" NAME="All in spring-otus Coverage Results" MODIFIED="1622394860954" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/vvpetrov$QuestionsDaoCsvTest.ic" NAME="QuestionsDaoCsvTest Coverage Results" MODIFIED="1621532875475" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ru.otus.vvpetrov.dao.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/vvpetrov$ru_otus_vvpetrov_in_spring_otus.ic" NAME="ru.otus.vvpetrov in spring-otus Coverage Results" MODIFIED="1622395528768" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ru.otus.vvpetrov.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/vvpetrov$ru_otus_vvpetrov_dao_in_otus.ic" NAME="ru.otus.vvpetrov.dao in otus Coverage Results" MODIFIED="1621547015322" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ru.otus.vvpetrov.dao.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/vvpetrov$ru_otus_vvpetrov_in_otus.ic" NAME="ru.otus.vvpetrov in otus Coverage Results" MODIFIED="1621586320409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ru.otus.vvpetrov.*</FILTER>
+    </SUITE>
+  </component>
+</project>
