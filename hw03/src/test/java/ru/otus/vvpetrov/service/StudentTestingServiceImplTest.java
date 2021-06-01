@@ -23,7 +23,7 @@ class StudentTestingServiceImplTest {
     private TestOfStudentService testingService;
 
     @Mock
-    StudentService studentService;
+    private StudentService studentService;
 
     @DisplayName("Должен сверить первый ответ...")
     @Test

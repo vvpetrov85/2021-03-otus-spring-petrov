@@ -24,7 +24,7 @@ public class IOServiceConsole implements IOService {
             this.systemOut = systemOut;
             this.reader = new BufferedReader(new InputStreamReader(systemIn));
         } catch (Exception e) {
-            throw new ExceptionIOService(" Error during read string from console ", e);
+            throw new ExceptionIOService("Error during reading input value", e);
         }
     }
 
@@ -39,7 +39,7 @@ public class IOServiceConsole implements IOService {
         try {
             answerString = reader.readLine();
         } catch (Exception e) {
-            throw new ExceptionIOService(" Error during read string from console ", e);
+            throw new ExceptionIOService("Error during read string from console", e);
         }
         return answerString;
     }

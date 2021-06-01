@@ -19,13 +19,14 @@ class StudentServiceImplTest {
     @Mock
     private IOServiceConsole ioService;
 
-    @DisplayName("Должен вернуть студента name name")
+    @DisplayName("Должен проверить имя и фамилию студента name name")
     @Test
     void getStudent() {
-        Student studentEtalon = new Student("name", "name");
-        when(ioService.inputString()).thenReturn("name");
+        Student studentEtalon = new Student("Petrov", "Vitaly");
+        when(ioService.inputString()).thenReturn("Vitaly").thenReturn("Petrov");
         studentService = new StudentServiceImpl(ioService);
         Student student = studentService.getStudent();
-        assertThat(studentEtalon.toString()).isEqualTo(student.toString());
+        assertThat(studentEtalon.getClass()).isEqualTo(student.getClass());
+        assertThat(studentEtalon).usingRecursiveComparison().isEqualTo(student);
     }
 }

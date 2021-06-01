@@ -16,11 +16,15 @@ class QuestionsDaoCsvTest {
     private QuestionsDaoCsv questionsDaoCsv;
 
     @Test
-    @DisplayName("Тестирование Dao")
+    @DisplayName("Тестирование Dao: список вопросов должен быть не пустой, список должен содержать класс Question и первый вопрос не должен быть null")
     void getQuestionsOk() {
         questionsDaoCsv = new QuestionsDaoCsv("QuestionsTest.csv");
         List<Question> questionList = questionsDaoCsv.getQuestions();
+
         assertThat(questionList).isNotNull();
+        assertThat(questionList.get(0).getClass()).isEqualTo(Question.class);
+        assertThat(questionList.get(0).getQuestion()).isNotNull();
+        assertThat(questionList.get(0).getQuestion()).isEqualTo("Which four can be thrown using the throw statement?");
     }
 
     @Test

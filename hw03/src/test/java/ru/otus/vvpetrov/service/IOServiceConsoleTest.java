@@ -14,8 +14,7 @@ import java.io.PrintStream;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.assertj.core.api.AssertionsForClassTypes.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -46,17 +45,15 @@ class IOServiceConsoleTest {
         baiStream = new ByteArrayInputStream(msg.getBytes());
         ioService = new IOServiceConsole(new PrintStream(new ByteArrayOutputStream()), baiStream);
         String answer = ioService.inputString();
-        ioService.outputString(msg);
         assertThat(answer).isEqualTo(msg);
     }
 
     @DisplayName("должен вернуть ExceptionIOService. Так как в конструкто передали null")
     @Test
     void constructorException() {
-        Exception thrown = assertThrows(Exception.class, () -> {
+        assertThrows(ExceptionIOService.class, () -> {
             ioService = new IOServiceConsole(new PrintStream(new ByteArrayOutputStream()), null);
         });
-        assertThat(thrown.getClass()).isEqualTo(ExceptionIOService.class);
     }
 
     @DisplayName("должен вернуть List 1,3")
@@ -78,7 +75,7 @@ class IOServiceConsoleTest {
         assertThatThrownBy(() -> ioService.inputString()).isInstanceOf(ExceptionIOService.class);
     }
 
-    @DisplayName("Не должен выбрасывать исключения ")
+    @DisplayName("Не должен выбрасывать исключения и входящее сообщение не должно преобразоваться в List")
     @Test
     void readIntListError() {
         List<Integer> correctList = new LinkedList<>(List.of(1, 4, 7));
@@ -89,5 +86,6 @@ class IOServiceConsoleTest {
         List<Integer> listInt = new LinkedList<>();
         listInt.addAll(ioService.readIntList());
         assertNotEquals(correctList, listInt);
+        assertThatCode(() -> {ioService.readIntList();}).doesNotThrowAnyException();
     }
 }
